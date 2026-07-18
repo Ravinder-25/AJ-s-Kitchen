@@ -66,8 +66,15 @@ header.nav.scrolled{
   font-size:1.25rem;
   color:var(--ink);
   display:flex;
-  align-items:baseline;
-  gap:6px;
+  align-items:center;
+  gap:10px;
+}
+.nav-mark-logo{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+  display:block;
+  flex-shrink:0;
 }
 .nav-mark span{color:var(--ink); font-style:italic;}
 nav.links{
@@ -175,15 +182,23 @@ nav.links a:hover::after{width:100%;}
   transform:translateY(16px);
   animation:riseIn 0.9s ease forwards 0.15s;
 }
-.hero h1{
-  font-size:clamp(3rem, 8vw, 5.4rem);
-  color:var(--ink);
-  line-height:0.98;
+.hero-brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:6px;
+  margin-bottom:10px;
 }
-.hero h1 em{
-  font-style:italic;
-  color:var(--ink);
-  font-weight:600;
+.hero-brand-logo{
+  width:86px;
+  height:86px;
+  object-fit:contain;
+  flex-shrink:0;
+}
+.hero-brand h1{
+  font-size:clamp(2.5rem, 6vw, 4rem);
+  line-height:0.95;
+  margin:0;
 }
 .hero-tag{
   margin-top:22px;
