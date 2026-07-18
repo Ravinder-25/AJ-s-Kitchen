@@ -11,8 +11,8 @@
   :root{
     --paper:#ffffff;
     --paper-dim:#fcecf4;
-    --yellow:#f8e0e9;
-    --yellow-soft:#fffdfc;
+    --pink:#f8e0e9;
+    --pink-soft:#fffdfc;
     --ink:#2B2118;
     --ink-soft:#6B5D4D;
     --radius: 2px;
@@ -97,7 +97,7 @@
     position:absolute;
     left:0; bottom:0;
     width:0; height:2px;
-    background:var(--yellow);
+    background:var(--pink);
     transition:width 0.25s ease;
   }
   nav.links a:hover::after{width:100%;}
@@ -208,7 +208,7 @@
     transition:transform 0.2s ease, background 0.2s ease, border-color .2s ease;
   }
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--ink); color:var(--yellow-soft);}
+  .btn-primary{background:var(--ink); color:var(--pink-soft);}
   .btn-primary:hover{background:#3a2c1e;}
   .btn-outline{border-color:rgba(43,33,24,0.35); color:var(--ink);}
   .btn-outline:hover{border-color:var(--ink); background:rgba(255,255,255,0.35);}
@@ -256,7 +256,7 @@
 
   /* ---------- MENU (specials board) ---------- */
   .menu-section{
-    background:var(--yellow);
+    background:var(--pink);
     position:relative;
   }
   .menu-head{
@@ -341,7 +341,7 @@
     overflow:hidden;
     background:
       repeating-linear-gradient(135deg, rgba(43,33,24,0.05) 0 2px, transparent 2px 14px),
-      var(--yellow-soft);
+      var(--pink-soft);
     border:1px solid rgba(43,33,24,0.1);
     display:flex;
     align-items:center;
@@ -425,7 +425,7 @@
     <div class="hero-copy">
       <span class="eyebrow">Basford &middot; Nottingham</span>
       <h1>AJ's <em>Kitchen</em></h1>
-      <p class="hero-tag">Fresh cobs, hot breakfasts, proper pies and a few proper sandwiches. Inside Selco Builders Warehouse, open early for the trade and anyone else who fancies a good feed.</p>
+      <p class="hero-tag">Fresh cobs, hot breakfasts, pies and sandwiches. Inside Selco Builders Warehouse, open early for the trade and anyone else who fancies good food.</p>
       <div class="hero-cta">
         <a href="#menu" class="btn btn-primary">See the menu</a>
         <a href="#visit" class="btn btn-outline">Find us</a>
@@ -571,7 +571,7 @@
 
 <footer>
   <div class="wrap">
-    <strong>AJ's Kitchen</strong> &mdash; made with care, one cob at a time. &copy; <span id="year"></span>
+    <strong>AJ's Kitchen</strong> &mdash; made with care. &copy; <span id="year"></span>
   </div>
 </footer>
 
