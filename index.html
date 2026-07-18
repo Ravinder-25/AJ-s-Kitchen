@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJ's Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Karla:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-dim:#fcecf4;
+    --yellow:#f8e0e9;
+    --yellow-soft:#fffdfc;
+    --ink:#2B2118;
+    --ink-soft:#6B5D4D;
+    --radius: 2px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Karla', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Playfair Display', 'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  section{padding:96px 0;}
+  @media(max-width:640px){ section{padding:64px 0;} }
+
+  .eyebrow{
+    font-family:'Karla', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.72rem;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 32px;
+    background:transparent;
+    transition:background 0.25s ease, box-shadow 0.25s ease;
+  }
+  header.nav.scrolled{
+    background:rgba(252,236,243,0.96);
+    backdrop-filter:blur(6px);
+    box-shadow:0 1px 0 rgba(43,33,24,0.08);
+  }
+  .nav-mark{
+    font-family:'Playfair Display', 'Fraunces', serif;
+    font-weight:600;
+    font-size:1.25rem;
+    color:var(--ink);
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+  }
+  .nav-mark span{color:var(--ink); font-style:italic;}
+  nav.links{
+    display:flex;
+    gap:34px;
+  }
+  nav.links a{
+    color:var(--ink);
+    font-size:0.9rem;
+    font-weight:500;
+    letter-spacing:0.02em;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:2px;
+    background:var(--yellow);
+    transition:width 0.25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-toggle{
+    display:none; background:none; border:none; cursor:pointer; padding:6px;
+    position:relative; z-index:210;
+  }
+  .nav-toggle span{
+    display:block; width:22px; height:2px; background:var(--ink); margin:5px 0;
+    transition:transform 0.25s ease, opacity 0.2s ease;
+  }
+  .nav-toggle.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-toggle.active span:nth-child(2){ opacity:0; }
+  .nav-toggle.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .nav-backdrop{
+    display:none;
+    position:fixed; inset:0;
+    background:rgba(43,33,24,0.35);
+    opacity:0;
+    transition:opacity 0.25s ease;
+    z-index:190;
+  }
+  @media(max-width:720px){
+    nav.links{
+      position:fixed;
+      top:0; right:0;
+      height:100vh;
+      width:min(72vw,300px);
+      background:var(--paper);
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      padding:0 40px;
+      gap:28px;
+      transform:translateX(100%);
+      transition:transform 0.3s ease;
+      box-shadow:-4px 0 24px rgba(43,33,24,0.08);
+      z-index:200;
+    }
+    nav.links.open{transform:translateX(0);}
+    .nav-toggle{display:block;}
+    .nav-backdrop{display:block;}
+    .nav-backdrop.open{opacity:1; pointer-events:auto;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+      radial-gradient(ellipse at 82% 12%, rgba(43,33,24,0.05), transparent 45%),
+      linear-gradient(135deg, var(--paper) 0%, var(--paper-dim) 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    position:relative;
+    z-index:2;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    align-items:center;
+    gap:40px;
+  }
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+  }
+  .hero-copy{
+    padding-top:70px;
+    opacity:0;
+    transform:translateY(16px);
+    animation:riseIn 0.9s ease forwards 0.15s;
+  }
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 5.4rem);
+    color:var(--ink);
+    line-height:0.98;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .hero-tag{
+    margin-top:22px;
+    max-width:420px;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+  .hero-cta{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    font-size:0.88rem;
+    font-weight:700;
+    letter-spacing:0.02em;
+    border-radius:var(--radius);
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform 0.2s ease, background 0.2s ease, border-color .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--ink); color:var(--yellow-soft);}
+  .btn-primary:hover{background:#3a2c1e;}
+  .btn-outline{border-color:rgba(43,33,24,0.35); color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink); background:rgba(255,255,255,0.35);}
+
+  .hero-mark{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    opacity:0;
+    animation:riseIn 0.9s ease forwards 0.4s;
+  }
+  .steam-cup{width:100%; max-width:340px; height:auto;}
+  .steam path{
+    stroke:var(--ink);
+    opacity:0.4;
+    stroke-dasharray:60;
+    stroke-dashoffset:60;
+    animation:steamRise 3.2s ease-in-out infinite;
+  }
+  .steam path:nth-child(2){animation-delay:0.5s;}
+  .steam path:nth-child(3){animation-delay:1s;}
+  @keyframes steamRise{
+    0%{stroke-dashoffset:60; opacity:0;}
+    30%{opacity:0.45;}
+    80%{stroke-dashoffset:0; opacity:0;}
+    100%{stroke-dashoffset:0; opacity:0;}
+  }
+  @keyframes riseIn{ to{opacity:1; transform:translateY(0);} }
+  @media (prefers-reduced-motion: reduce){
+    .hero-copy,.hero-mark{animation:none; opacity:1; transform:none;}
+    .steam path{animation:none; opacity:0.3;}
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:28px; left:50%;
+    transform:translateX(-50%);
+    color:var(--ink);
+    opacity:0.45;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    z-index:2;
+  }
+
+  /* ---------- MENU (specials board) ---------- */
+  .menu-section{
+    background:var(--yellow);
+    position:relative;
+  }
+  .menu-head{
+    position:relative;
+    text-align:center;
+    margin-bottom:56px;
+    z-index:1;
+  }
+  .menu-head .eyebrow{color:var(--ink); text-align:center;}
+  .menu-head h2{color:var(--ink); font-size:clamp(2rem,5vw,2.8rem);}
+  .menu-note{
+    color:var(--ink); opacity:0.65; font-size:0.9rem; margin-top:10px;
+  }
+  .menu-board{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:48px 64px;
+  }
+  @media(max-width:700px){ .menu-board{grid-template-columns:1fr; gap:44px;} }
+  .menu-col h3{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    color:var(--ink);
+    font-size:1.25rem;
+    margin-bottom:18px;
+    padding-bottom:10px;
+    border-bottom:2px solid rgba(43,33,24,0.18);
+  }
+  .menu-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    color:var(--ink);
+    padding:10px 0;
+  }
+  .menu-item .fill{
+    flex:1;
+    border-bottom:1px dotted rgba(43,33,24,0.3);
+    margin:0 8px;
+    transform:translateY(-4px);
+  }
+  .menu-item .name{font-weight:600; font-size:0.98rem;}
+  .menu-item .desc{
+    display:block;
+    font-size:0.8rem;
+    color:rgba(43,33,24,0.6);
+    font-weight:400;
+    margin-top:2px;
+  }
+  .menu-item .price{
+    font-family:'Fraunces',serif;
+    color:var(--ink);
+    font-weight:600;
+    font-size:0.98rem;
+    white-space:nowrap;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--paper-dim);}
+  .gallery-head{margin-bottom:44px;}
+  .gallery-head h2{font-size:clamp(1.9rem,4vw,2.6rem);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:160px;
+    gap:14px;
+  }
+  .gallery-grid .g1{grid-column:span 2; grid-row:span 2;}
+  .gallery-grid .g4{grid-column:span 2;}
+  @media(max-width:760px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+    .gallery-grid .g1{grid-column:span 2; grid-row:span 1;}
+    .gallery-grid .g4{grid-column:span 2;}
+  }
+  .photo-slot{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:
+      repeating-linear-gradient(135deg, rgba(43,33,24,0.05) 0 2px, transparent 2px 14px),
+      var(--yellow-soft);
+    border:1px solid rgba(43,33,24,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .photo-slot img{
+    width:100%; height:100%; object-fit:cover;
+    position:absolute; inset:0;
+  }
+  .photo-slot .placeholder{
+    text-align:center;
+    color:var(--ink-soft);
+    padding:12px;
+  }
+  .photo-slot .placeholder svg{width:26px; height:26px; margin:0 auto 8px; opacity:0.55;}
+  .photo-slot .placeholder span{
+    display:block; font-size:0.72rem; letter-spacing:0.04em;
+    text-transform:uppercase; opacity:0.7;
+  }
+
+  /* ---------- VISIT / MAP ---------- */
+  .visit{background:var(--paper);}
+  .visit-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media(max-width:820px){ .visit-grid{grid-template-columns:1fr;} }
+  .visit h2{font-size:clamp(1.9rem,4vw,2.6rem); margin-bottom:22px;}
+  .info-block{
+    display:flex; gap:16px;
+    padding:18px 0;
+    border-bottom:1px solid rgba(43,33,24,0.1);
+  }
+  .info-block:first-of-type{border-top:1px solid rgba(43,33,24,0.1);}
+  .info-block svg{width:20px; height:20px; flex-shrink:0; margin-top:2px; color:var(--ink);}
+  .info-block strong{display:block; font-size:0.95rem;}
+  .info-block p{color:var(--ink-soft); font-size:0.92rem; margin-top:2px;}
+  .hours-row{display:flex; justify-content:space-between; font-size:0.92rem; padding:3px 0; color:var(--ink-soft);}
+  .hours-row span:last-child{color:var(--ink); font-weight:600;}
+  .map-frame{
+    width:100%;
+    aspect-ratio:4/3.4;
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid rgba(43,33,24,0.15);
+    background:var(--paper-dim);
+  }
+  .map-frame iframe{width:100%; height:100%; border:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--paper-dim);
+    color:var(--ink-soft);
+    padding:36px 0;
+    text-align:center;
+    font-size:0.82rem;
+    border-top:1px solid rgba(43,33,24,0.1);
+  }
+  footer strong{color:var(--ink); font-family:'Fraunces',serif; font-weight:600;}
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <a href="#top" class="nav-mark">AJ's <span>Kitchen</span></a>
+  <nav class="links" id="navLinks">
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#visit">Visit</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Basford &middot; Nottingham</span>
+      <h1>AJ's <em>Kitchen</em></h1>
+      <p class="hero-tag">Fresh cobs, hot breakfasts, proper pies and a few proper sandwiches. Inside Selco Builders Warehouse, open early for the trade and anyone else who fancies a good feed.</p>
+      <div class="hero-cta">
+        <a href="#menu" class="btn btn-primary">See the menu</a>
+        <a href="#visit" class="btn btn-outline">Find us</a>
+      </div>
+    </div>
+    <div class="hero-mark">
+      <svg class="steam-cup" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g class="steam" fill="none" stroke-width="3" stroke-linecap="round">
+          <path d="M75 70 C70 55, 85 50, 80 35"/>
+          <path d="M100 70 C95 55, 110 50, 105 35"/>
+          <path d="M125 70 C120 55, 135 50, 130 35"/>
+        </g>
+        <path d="M50 90 h100 l-8 55 a12 12 0 0 1-12 10 H70 a12 12 0 0 1-12-10 Z" stroke="#2B2118" stroke-width="3" fill="none"/>
+        <path d="M150 100 q22 2 22 22 q0 20-22 20" stroke="#2B2118" stroke-width="3" fill="none"/>
+        <line x1="42" y1="156" x2="158" y2="156" stroke="#2B2118" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <span class="scroll-cue">Scroll</span>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <span class="eyebrow">On the board today</span>
+      <h2>Menu</h2><p class="menu-note">A simple draft of the favourites. Feel free to swap anything in once you have the final board.</p>
+    </div>
+    <div class="menu-board">
+      <div class="menu-col">
+        <h3>Cobs</h3>
+        <div class="menu-item"><span class="name">Bacon Cob</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Sausage Cob</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Bacon &amp; Sausage Cob</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Cheese &amp; Onion Cob</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Egg Cob</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Ham &amp; Cheese Sandwich</span><span class="fill"></span></div>
+      </div>
+      <div class="menu-col">
+        <h3>Breakfasts</h3>
+        <div class="menu-item"><span class="name">Full English<span class="desc">bacon, sausage, egg, beans, toast</span></span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Small Breakfast</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Beans on Toast</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Bacon on Toast</span><span class="fill"></span></div>
+      </div>
+      <div class="menu-col">
+        <h3>Pies &amp; Bakes</h3>
+        <div class="menu-item"><span class="name">Steak Pie</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Chicken &amp; Mushroom Pie</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Cheese &amp; Onion Pasty</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Sausage Roll</span><span class="fill"></span></div>
+      </div>
+      <div class="menu-col">
+        <h3>Drinks</h3>
+        <div class="menu-item"><span class="name">Tea</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Coffee</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Hot Chocolate</span><span class="fill"></span></div>
+        <div class="menu-item"><span class="name">Can of Pop</span><span class="fill"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <span class="eyebrow">A look inside</span>
+      <h2>Gallery</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="photo-slot g1">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+          <span>Add photo &middot; counter</span>
+        </div>
+      </div>
+      <div class="photo-slot g2">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+          <span>Add photo &middot; bacon cob</span>
+        </div>
+      </div>
+      <div class="photo-slot g3">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+          <span>Add photo &middot; breakfast</span>
+        </div>
+      </div>
+      <div class="photo-slot g4">
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+          <span>Add photo &middot; shop front</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="eyebrow">Come say hi</span>
+      <h2>Visit us</h2>
+
+      <div class="info-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div>
+          <strong>Address</strong>
+          <p>Inside Selco Builders Warehouse<br>Radford Road, Basford<br>Nottingham NG7 7EF</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <div>
+          <strong>Hours</strong>
+          <div style="margin-top:6px;">
+            <div class="hours-row"><span>Mon &ndash; Fri: </span><span>7:00 &ndash; 15:00</span></div>
+            <div class="hours-row"><span>Saturday: </span><span>8:00 &ndash; 15:00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h4l2 5-2.5 1.5a11 11 0 005 5L14 14l5 2v4a2 2 0 01-2 2A17 17 0 013 7a2 2 0 012-2z"/></svg>
+        <div>
+          <strong>Phone</strong>
+          <p>0115 000 0000</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d849.3921923677527!2d-1.1749373669097807!3d52.976417265031955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1784374526478!5m2!1sen!2suk"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+        title="AJ's Kitchen location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>AJ's Kitchen</strong> &mdash; made with care, one cob at a time. &copy; <span id="year"></span>
+  </div>
+</footer>
+
+<script>
+  // scroll-aware nav background
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  const backdrop = document.getElementById('navBackdrop');
+
+  function openNav(){
+    links.classList.add('open');
+    backdrop.classList.add('open');
+    toggle.classList.add('active');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+  function closeNav(){
+    links.classList.remove('open');
+    backdrop.classList.remove('open');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  toggle.addEventListener('click', () => {
+    links.classList.contains('open') ? closeNav() : openNav();
+  });
+  backdrop.addEventListener('click', closeNav);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
