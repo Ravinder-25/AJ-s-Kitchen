@@ -56,9 +56,10 @@ header.nav{
   transition:background 0.25s ease, box-shadow 0.25s ease;
 }
 header.nav.scrolled{
-  background:--blue;
-  backdrop-filter:blur(6px);
-  box-shadow:0 1px 0 rgba(43,33,24,0.08);
+  background:rgba(255,255,255,0.24);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:none;
 }
 .nav-mark{
   font-family:'Playfair Display', 'Fraunces', serif;
@@ -125,8 +126,7 @@ nav.links a:hover::after{width:100%;}
     top:calc(100% + 10px);
     right:0;
     min-width:180px;
-    background:--paper-dim;
-    backdrop-filter:blur(8px);
+    background:var(--paper);
     flex-direction:column;
     align-items:flex-start;
     padding:14px 16px;
@@ -136,7 +136,7 @@ nav.links a:hover::after{width:100%;}
     pointer-events:none;
     transition:opacity 0.25s ease, transform 0.25s ease;
     box-shadow:0 10px 30px rgba(43,33,24,0.12);
-    border:1px solid rgba(43,33,24,0.08);
+    border:1px solid rgba(43,33,24,0.12);
     border-radius:var(--radius);
     z-index:200;
   }
@@ -171,7 +171,7 @@ nav.links a:hover::after{width:100%;}
   display:grid;
   grid-template-columns:1.15fr 0.85fr;
   align-items:center;
-  gap:40px;
+  gap:10px;
 }
 @media(max-width:860px){
   .hero-grid{grid-template-columns:1fr; text-align:left;}
@@ -201,7 +201,6 @@ nav.links a:hover::after{width:100%;}
   margin:0;
 }
 .hero-tag{
-  margin-top:22px;
   max-width:420px;
   color:var(--ink-soft);
   font-size:1.05rem;
@@ -249,6 +248,7 @@ nav.links a:hover::after{width:100%;}
   width:max-content;
   max-width:100%;
   margin:0 auto;
+  transform: translateX(-18px);
 }
 .steam-cup{
   flex:0 0 auto;
