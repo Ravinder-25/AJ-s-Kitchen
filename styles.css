@@ -190,8 +190,8 @@ nav.links a:hover::after{width:100%;}
   margin-bottom:10px;
 }
 .hero-brand-logo{
-  width:86px;
-  height:86px;
+  width:250px;
+  height:250px;
   object-fit:contain;
   flex-shrink:0;
 }
