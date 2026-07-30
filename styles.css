@@ -465,3 +465,28 @@ footer{
   border-top:1px solid rgba(43,33,24,0.1);
 }
 footer strong{color:var(--ink); font-family:'Playfair Display', 'Fraunces', serif; font-weight:600; font-style:italic;}
+
+/* --- temp ---*/
+.coming-card{
+    margin-top:40px;
+    max-width:520px;
+    padding:32px;
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(43,33,24,.12);
+}
+
+.coming-card h2{
+    margin-bottom:14px;
+    font-size:2rem;
+}
+
+.coming-card p{
+    color:var(--ink-soft);
+    margin-bottom:14px;
+}
+
+.coming-card p:last-child{
+    margin-bottom:0;
+    font-weight:600;
+}
