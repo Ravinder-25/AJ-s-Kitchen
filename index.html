@@ -11,6 +11,15 @@
 <link rel="stylesheet" href="styles.css">
 
 </head>
+<!-- Google tag (gtag.js) for analytics tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5ETM861DRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5ETM861DRS');
+</script>
 <body>
 
 <header class="nav" id="siteNav">
@@ -39,7 +48,7 @@
       </div>
       <p class="hero-tag">Fresh breakfasts, hot cobs, sandwiches, homemade favourites and quality tea and coffee, served inside Selco Builders Warehouse in Basford, Nottingham.</p>
       <div class="coming-card">
-        <h2>🚧 Opening <s>Soon</s> 1<small>st</small> September 2026</h2>
+        <h2>🚧 Opening <s>Soon</s><br><span class="opening-date">1<small>st</small> September 2026</span></h2>
         <p>We're busy putting the finishing touches to AJ's Kitchen.</p>
         <p>Our full website, menu and opening details will be available soon. We can't wait to welcome you!</p>
       </div>
@@ -73,87 +82,223 @@
     <div class="menu-head">
       <span class="eyebrow">On the board today</span>
       <h2>Menu</h2>
+      <p class="menu-note">Tap a category to see what's in it.</p>
     </div>
-    <div class="menu-board">
-      <div class="menu-col">
-        <h3>Breakfasts</h3>
-        <div class="menu-item"><span class="name">Small English<span class="desc">Sausage, bacon, black pudding, egg, hash brown, toast, beans, mushrooms &amp; tomatoes</span></span></div>
-        <div class="menu-item"><span class="name">Large English<span class="desc">Everything in the Small English, double portions</span></span></div>
-        <div class="menu-item"><span class="name">Eggs on Toast<span class="desc">Fried or scrambled</span></span></div>
-        <div class="menu-item"><span class="name">Beans on Toast</span></div>
-        <div class="menu-item"><span class="name">Toast with Butter &amp; Jam</span></div>
+
+    <div class="menu-board accordion">
+
+      <div class="menu-group">
+        <h3 class="menu-group-title">Breakfast Menu</h3>
+
+      <details class="menu-acc" open>
+        <summary>Breakfasts</summary>
+        <div class="menu-acc-body">
+          <p class="menu-note-inline">All come with a choice of toast or bread &amp; butter.</p>
+
+          <div class="menu-tier">
+            <h4>Option 1</h4>
+            <ul class="menu-list menu-list--muted">
+              <li>2 Bacon</li>
+              <li>Sausage</li>
+              <li>Egg</li>
+              <li>Hash brown</li>
+              <li>Beans and tomatoes</li>
+            </ul>
+          </div>
+
+          <div class="menu-tier">
+            <h4>Option 2</h4>
+            <ul class="menu-list menu-list--muted">
+              <li>2 bacon</li>
+              <li>2 sausages</li>
+              <li>2 eggs</li>
+              <li>Hash brown</li>
+              <li>Beans and tomatoes</li>
+              <li>black pudding</li>
+            </ul>
+          </div>
+
+          <div class="menu-tier">
+            <h4>Option 3</h4>
+            <ul class="menu-list menu-list--muted">
+              <li>2 bacon</li>
+              <li>2 sausages</li>
+              <li>2 eggs</li>
+              <li>2 Hash brown</li>
+              <li>Beans, tomatoes and mushrooms</li>
+              <li>black pudding</li>
+            </ul>
+          </div>
+
+          <div class="menu-tier">
+            <h4>Veggie</h4>
+            <ul class="menu-list menu-list--muted">
+              <li>2 veggie sausages</li>
+              <li>Egg</li>
+              <li>2 hash browns</li>
+              <li>Beans</li>
+              <li>Mushrooms</li>
+              <li>Tomatoes</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="menu-acc">
+        <summary>Build Your Own Breakfast</summary>
+        <div class="menu-acc-body">
+          <p class="menu-note-inline">Choose from:</p>
+          <ul class="menu-list menu-list--grid menu-list--muted">
+            <li>Bacon</li>
+            <li>Sausage</li>
+            <li>Egg</li>
+            <li>Black pudding</li>
+            <li>Hash brown</li>
+            <li>Beans</li>
+            <li>Tomatoes</li>
+            <li>Mushrooms</li>
+            <li>Veggie sausage</li>
+            <li>Toast / B&amp;B</li>
+            <li>Jam</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="menu-acc">
+        <summary>Breakfast Cobs</summary>
+        <div class="menu-acc-body">
+          <ul class="menu-list">
+            <li>Bacon &amp; sausage</li>
+            <li>Bacon</li>
+            <li>Sausage</li>
+            <li>2 &times; eggs</li>
+            <li>Veggie sausage</li>
+            <li>Any extra as above</li>
+          </ul>
+          <p class="menu-note-inline">Any extra fillings as requested</p>
+        </div>
+      </details>
+
+      <details class="menu-acc">
+        <summary>Cold Cobs or Sandwiches</summary>
+        <div class="menu-acc-body">
+          <ul class="menu-list">
+            <li>Cheese &amp; tomato or onion</li>
+            <li>Tuna mayo &amp; cucumber</li>
+            <li>Egg mayo</li>
+            <li>Ham</li>
+            <li>Beef &amp; onion</li>
+            <li>BLT</li>
+          </ul>
+          <p class="menu-note-inline">Add salad &middot; ask for any sauces such as:</p>
+          <ul class="menu-list menu-list--grid menu-list--muted">
+            <li>Mayo</li>
+            <li>Mustard</li>
+            <li>Ketchup</li>
+            <li>Branston pickle</li>
+          </ul>
+
+        </div>
+      </details>
+
       </div>
 
-      <div class="menu-col">
-        <h3>Hot Cobs</h3>
-        <div class="menu-item"><span class="name">Bacon</span></div>
-        <div class="menu-item"><span class="name">Sausage</span></div>
-        <div class="menu-item"><span class="name">Egg</span></div>
-        <div class="menu-item"><span class="name">Make Your Own</span></div>
+      <div class="menu-group">
+        <h3 class="menu-group-title">Lunch Menu</h3>
+
+      <details class="menu-acc">
+        <summary>Hot Lunch Meals &amp; Paninis</summary>
+        <div class="menu-acc-body">
+          <p class="menu-note-inline">Comes with salad.</p>
+          <ul class="menu-list">
+            <li>Burger &amp; chips</li>
+            <li>Cheeseburger &amp; chips</li>
+            <li>Chicken burger &amp; chips</li>
+            <li>Veggie burger &amp; chips</li>
+            <li>Pasta &amp; garlic bread</li>
+            <li>Pie, chips &amp; gravy</li>
+            <li>Sausage roll &amp; chips</li>
+            <li>Egg, chips &amp; beans</li>
+            <li>Scampi, chips &amp; peas</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="menu-acc">
+        <summary>Hot Cobs or Paninis</summary>
+        <div class="menu-acc-body">
+          <div class="menu-tier">
+            <h4>Cobs</h4>
+            <ul class="menu-list">
+              <li>Chip cob</li>
+              <li>Fish finger cob</li>
+            </ul>
+          </div>
+          <div class="menu-tier">
+            <h4>Paninis</h4>
+            <ul class="menu-list">
+              <li>Tuna cheese melt</li>
+              <li>Cheese &amp; ham</li>
+              <li>Beef &amp; onion cheese melt</li>
+              <li>Cheese &amp; tomato melt</li>
+              <li>Bacon &amp; tomato melt</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="menu-acc">
+        <summary>Jacket Potatoes</summary>
+        <div class="menu-acc-body">
+          <p class="menu-note-inline">Comes with salad</p>
+          <p class="menu-note-inline">Fillings:</p>
+          <ul class="menu-list menu-list--grid menu-list--muted">
+            <li>Just butter</li>
+            <li>Cheese</li>
+            <li>Tuna</li>
+            <li>Coleslaw</li>
+            <li>Beans</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="menu-acc">
+        <summary>Something Light</summary>
+        <div class="menu-acc-body">
+          <ul class="menu-list">
+            <li>Toast, butter &amp; jam</li>
+            <li>Egg (Scrambled or Fried) on toast</li>
+            <li>Beans on toast</li>
+            <li>Soup of the day</li>
+            <li>Check specials board</li>
+          </ul>
+        </div>
+      </details>
+
       </div>
 
-      <div class="menu-col">
-        <h3>Cold Cobs</h3>
-        <div class="menu-item"><span class="name">Cheese &amp; Onion</span></div>
-        <div class="menu-item"><span class="name">Ham &amp; Cheese</span></div>
-        <div class="menu-item"><span class="name">Beef &amp; Onion</span></div>
-        <div class="menu-item"><span class="name">Tuna Mayo</span></div>
-        <div class="menu-item"><span class="name">Egg Mayo</span></div>
-        <div class="menu-item"><span class="name">Chicken &amp; Stuffing</span></div>
+      <div class="menu-group">
+        <h3 class="menu-group-title">Drinks</h3>
+
+      <details class="menu-acc">
+        <summary>Hot &amp; Cold Drinks</summary>
+        <div class="menu-acc-body">
+          <ul class="menu-list menu-list--grid">
+            <li>Tea</li>
+            <li>Coffee</li>
+            <li>Pure orange juice</li>
+            <li>Pure apple juice</li>
+            <li>Cans</li>
+            <li>Bottled water</li>
+          </ul>
+        </div>
+      </details>
+
       </div>
 
-      <div class="menu-col">
-        <h3>Lunch Menu</h3>
-        <p class="menu-note-inline">Served with chips</p>
-        <div class="menu-item"><span class="name">Sausage, Egg &amp; Beans</span></div>
-        <div class="menu-item"><span class="name">Fish Fingers, Salad &amp; Peas</span></div>
-        <div class="menu-item"><span class="name">Pie, Mushy Peas &amp; Gravy</span></div>
-        <div class="menu-item"><span class="name">Sausage Roll &amp; Gravy</span></div>
-      </div>
-
-      <div class="menu-col">
-        <h3>Hot Filled Paninis</h3>
-        <div class="menu-item"><span class="name">Tuna Melt</span></div>
-        <div class="menu-item"><span class="name">Cheese &amp; Tomato</span></div>
-        <div class="menu-item"><span class="name">Ham &amp; Cheese</span></div>
-        <div class="menu-item"><span class="name">Beef Melt</span></div>
-        <div class="menu-item"><span class="name">Bacon, Cheese &amp; Tomato</span></div>
-      </div>
-
-      <div class="menu-col">
-        <h3>Burgers</h3>
-        <p class="menu-note-inline">Served with chips &amp; salad</p>
-        <div class="menu-item"><span class="name">Cheeseburger</span></div>
-        <div class="menu-item"><span class="name">Chicken Burger</span></div>
-        <div class="menu-item"><span class="name">Veggie Burger</span></div>
-      </div>
-
-      <div class="menu-col">
-        <h3>Pasta Dishes</h3>
-        <p class="menu-note-inline">Served with garlic bread &amp; salad</p>
-        <div class="menu-item"><span class="name">Beef Lasagne</span></div>
-        <div class="menu-item"><span class="name">Chicken Alfredo</span></div>
-        <div class="menu-item"><span class="name">Veggie Pasta Salad</span></div>
-      </div>
-
-      <div class="menu-col">
-        <h3>Jacket Potatoes</h3>
-        <p class="menu-note-inline">Served with salad</p>
-        <div class="menu-item"><span class="name">Butter</span></div>
-        <div class="menu-item"><span class="name">Cheese</span></div>
-        <div class="menu-item"><span class="name">Beans</span></div>
-        <div class="menu-item"><span class="name">Tuna</span></div>
-      </div>
-
-      <div class="menu-col">
-        <h3>Drinks</h3>
-        <div class="menu-item"><span class="name">Tea</span></div>
-        <div class="menu-item"><span class="name">Coffee</span></div>
-        <div class="menu-item"><span class="name">Cans of Drink</span></div>
-        <div class="menu-item"><span class="name">Orange Juice</span></div>
-        <div class="menu-item"><span class="name">Apple Juice</span></div>
-      </div>
     </div>
+
+    <p class="menu-disclaimer">All food may contain traces of nuts. All food is subject to availability.</p>
   </div>
 </section>
 
@@ -276,7 +421,7 @@
 
 <footer>
   <div class="wrap">
-    <strong>AJ's Kitchen</strong> &mdash; Quality food made with love. &copy; <span id="year"></span>
+    <strong>AJ's Kitchen</strong> - Quality food made with love. &copy; <span id="year"></span>
   </div>
 </footer>
 

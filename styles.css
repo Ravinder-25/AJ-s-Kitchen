@@ -337,7 +337,7 @@ nav.links a:hover::after{width:100%;}
 .menu-head{
   position:relative;
   text-align:center;
-  margin-bottom:56px;
+  margin-bottom:44px;
   z-index:1;
 }
 .menu-head .eyebrow{color:var(--ink); text-align:center;}
@@ -345,58 +345,127 @@ nav.links a:hover::after{width:100%;}
 .menu-note{
   color:var(--ink); opacity:0.65; font-size:0.9rem; margin-top:10px;
 }
-.menu-board{
+
+.menu-board.accordion{
   position:relative;
   z-index:1;
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:44px 40px;
+  max-width:760px;
+  margin:0 auto;
+  background:var(--paper);
+  border-radius:var(--radius);
+  border:1px solid rgba(43,33,24,0.12);
+  overflow:hidden;
 }
-@media(max-width:700px){ .menu-board{grid-template-columns:1fr; gap:40px;} }
-.menu-note-inline{
-  font-size:0.8rem;
-  color:rgba(43,33,24,0.6);
-  margin:-10px 0 12px;
-  font-style:italic;
+.menu-group{}
+.menu-group + .menu-group{
+  border-top:3px solid rgba(43,33,24,0.14);
 }
-.menu-col h3{
+.menu-group .menu-acc:last-child{border-bottom:none;}
+.menu-group-title{
+  margin:0;
+  padding:16px 24px;
+  background:var(--paper-dim);
+  color:var(--ink-soft);
+  font-family:'Karla',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  font-size:0.75rem;
+}
+.menu-acc{
+  border-bottom:1px solid rgba(43,33,24,0.12);
+}
+.menu-acc:last-child{border-bottom:none;}
+.menu-acc summary{
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:20px 24px;
   font-family:'Fraunces',serif;
   font-style:italic;
   font-weight:500;
+  font-size:1.1rem;
   color:var(--ink);
-  font-size:1.25rem;
-  margin-bottom:18px;
-  padding-bottom:10px;
-  border-bottom:2px solid rgba(43,33,24,0.18);
+  transition:background 0.2s ease;
 }
-.menu-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  gap:12px;
-  color:var(--ink);
-  padding:10px 0;
+.menu-acc summary:hover{background:rgba(43,33,24,0.04);}
+.menu-acc summary::-webkit-details-marker{display:none;}
+.menu-acc summary::after{
+  content:"+";
+  font-family:'Karla',sans-serif;
+  font-style:normal;
+  font-weight:700;
+  font-size:1.4rem;
+  line-height:1;
+  color:var(--ink-soft);
+  transition:transform 0.25s ease;
+  flex-shrink:0;
 }
-.menu-item .fill{
-  flex:1;
-  border-bottom:1px dotted rgba(43,33,24,0.3);
-  margin:0 8px;
-  transform:translateY(-4px);
+.menu-acc[open] summary::after{transform:rotate(45deg);}
+.menu-acc-body{
+  padding:0 24px 28px;
 }
-.menu-item .name{font-weight:600; font-size:0.98rem;}
-.menu-item .desc{
-  display:block;
-  font-size:0.8rem;
-  color:rgba(43,33,24,0.6);
-  font-weight:400;
-  margin-top:2px;
-}
-.menu-item .price{
+.menu-tier{margin-bottom:22px;}
+.menu-tier:last-child{margin-bottom:0;}
+.menu-tier h4{
   font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
+  color:var(--ink);
+  font-size:1.15rem;
+  margin-bottom:9px;
+}
+.menu-list{
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:7px 20px;
+  margin-bottom:4px;
+}
+.menu-list:last-child{margin-bottom:0;}
+.menu-list li{
   color:var(--ink);
   font-weight:600;
   font-size:0.98rem;
-  white-space:nowrap;
+  padding-left:14px;
+  position:relative;
+}
+.menu-list li::before{
+  content:"";
+  position:absolute; left:0; top:0.55em;
+  width:5px; height:5px;
+  border-radius:50%;
+  background:var(--ink);
+  opacity:0.45;
+}
+.menu-list--grid{grid-template-columns:repeat(auto-fill, minmax(130px,1fr));}
+.menu-list--muted li{
+  color:var(--ink-soft);
+  font-weight:400;
+  font-size:0.88rem;
+}
+.menu-list--muted li::before{opacity:0.3;}
+@media(max-width:480px){
+  .menu-list{grid-template-columns:1fr;}
+}
+.menu-note-inline{
+  font-size:0.85rem;
+  color:var(--ink-soft);
+  font-style:italic;
+  margin:2px 0 12px;
+}
+.menu-disclaimer{
+  max-width:760px;
+  margin:22px auto 0;
+  text-align:center;
+  font-size:0.8rem;
+  color:var(--ink-soft);
+  font-style:italic;
+  position:relative;
+  z-index:1;
 }
 
 /* ---------- GALLERY ---------- */
@@ -506,6 +575,13 @@ footer strong{color:var(--ink); font-family:'Playfair Display', 'Fraunces', seri
 .coming-card h2{
     margin-bottom:14px;
     font-size:2rem;
+}
+
+.opening-date{
+    display:block;
+    margin-top:6px;
+    font-size:0.8em;
+    opacity:0.85;
 }
 
 .coming-card p{
