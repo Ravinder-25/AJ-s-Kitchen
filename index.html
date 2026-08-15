@@ -399,7 +399,7 @@
         </svg>
         <div>
           <strong>Instagram</strong>
-          <p><a href="https://www.instagram.com/ajskitchennottingham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">@ajskitchennottingham</a></p>
+          <p><a href="https://www.instagram.com/ajskitchennottingham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" id="instagramLink" target="_blank" rel="noopener">@ajskitchennottingham</a></p>
         </div>
       </div>
 
@@ -504,9 +504,19 @@
     });
   }
 
+  // Social interaction: fires when the Instagram link is clicked
+  const instagramLink = document.getElementById('instagramLink');
+  if (instagramLink) {
+    instagramLink.addEventListener('click', () => {
+      trackEvent('social_interaction', {
+        event_category: 'Social',
+        event_label: 'Instagram',
+        action: 'click'
+      });
+    });
+  }
+
   // Map interaction: fires when the user clicks/drags inside the embedded map.
-  // Cross-origin iframes can't be listened to directly, so we detect the
-  // window losing focus to the iframe, which happens the moment it's clicked.
   const mapFrame = document.getElementById('mapFrame');
   if (mapFrame) {
     window.addEventListener('blur', () => {
