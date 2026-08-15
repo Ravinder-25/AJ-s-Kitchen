@@ -48,12 +48,12 @@
       </div>
       <p class="hero-tag">Fresh breakfasts, hot cobs, sandwiches, homemade favourites and quality tea and coffee, served inside Selco Builders Warehouse in Basford, Nottingham.</p>
       <div class="coming-card">
-        <h2>🚧 Opening <s>Soon</s><br><span class="opening-date">1<small>st</small> September 2026</span></h2>
+        <h2>🚧 Opening <s>Soon</s><br><span class="opening-date">7<small>th</small> September 2026</span></h2>
         <p>We're busy putting the finishing touches to AJ's Kitchen.</p>
         <p>Our full website, menu and opening details will be available soon. We can't wait to welcome you!</p>
       </div>
       <div class="hero-cta">
-        <a href="#menu" class="btn btn-primary">See the menu</a>
+        <a href="#menu" id="seeMenuBtn" class="btn btn-primary">See the menu</a>
         <a href="#gallery" class="btn btn-outline">View gallery</a>
         <a href="#visit" class="btn btn-outline">Find us</a>
       </div>
@@ -356,7 +356,7 @@
         <div>
           <strong>Hours</strong>
           <div style="margin-top:6px;">
-            <div class="hours-row"><span>Mon &ndash; Fri: </span><span>7:00 &ndash; 14:00</span></div>
+            <div class="hours-row"><span>Mon &ndash; Fri: </span><span>7:40 &ndash; 13:30</span></div>
             
           </div>
         </div>
@@ -393,6 +393,18 @@
 
       <div class="info-block">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+        <div>
+          <strong>Instagram</strong>
+          <p><a href="https://www.instagram.com/ajskitchennottingham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">@ajskitchennottingham</a></p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <circle cx="12" cy="12" r="9"/>
           <path d="M3 12h18"/>
           <path d="M12 3c2.5 2.5 4 5.7 4 9s-1.5 6.5-4 9"/>
@@ -407,6 +419,7 @@
 
     <div class="map-frame">
       <iframe
+        id="mapFrame"
         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d849.3921923677527!2d-1.1749373669097807!3d52.976417265031955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1784374526478!5m2!1sen!2suk"
         loading="lazy"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -459,6 +472,52 @@
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Analytics: custom events ----
+  function trackEvent(name, params){
+    if (typeof gtag === 'function') {
+      gtag('event', name, params);
+    }
+  }
+
+  // Menu interaction: fires whenever a menu category is opened or closed
+  document.querySelectorAll('.menu-acc').forEach((acc) => {
+    acc.addEventListener('toggle', () => {
+      const category = acc.querySelector('summary')?.textContent.trim() || 'Unknown';
+      trackEvent('menu_interaction', {
+        event_category: 'Menu',
+        event_label: category,
+        action: acc.open ? 'open' : 'close'
+      });
+    });
+  });
+
+  // Menu interaction: also fires when the hero "See the menu" button is clicked
+  const seeMenuBtn = document.getElementById('seeMenuBtn');
+  if (seeMenuBtn) {
+    seeMenuBtn.addEventListener('click', () => {
+      trackEvent('menu_interaction', {
+        event_category: 'Menu',
+        event_label: 'See the menu button',
+        action: 'click'
+      });
+    });
+  }
+
+  // Map interaction: fires when the user clicks/drags inside the embedded map.
+  // Cross-origin iframes can't be listened to directly, so we detect the
+  // window losing focus to the iframe, which happens the moment it's clicked.
+  const mapFrame = document.getElementById('mapFrame');
+  if (mapFrame) {
+    window.addEventListener('blur', () => {
+      if (document.activeElement === mapFrame) {
+        trackEvent('map_interaction', {
+          event_category: 'Map',
+          event_label: 'Google Maps embed'
+        });
+      }
+    });
+  }
 </script>
 
 </body>
