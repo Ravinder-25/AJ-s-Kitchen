@@ -83,7 +83,7 @@
     <div class="hero-copy">
       <span class="eyebrow">Basford &middot; Nottingham</span>
       <div class="hero-brand">
-        <img src="logo_black.png" alt="AJ's Kitchen logo" class="hero-brand-logo">
+        <img src="logo_black.png" alt="AJ's Kitchen logo" class="hero-brand-logo" fetchpriority="high">
         <h1><em>AJ's Kitchen</em></h1>
       </div>
       <p class="hero-tag">Fresh breakfasts, hot cobs, sandwiches, homemade favourites and quality tea and coffee, served inside Selco Builders Warehouse in Basford, Nottingham.</p>
@@ -138,11 +138,12 @@
           <div class="menu-tier">
             <h4>Option 1</h4>
             <ul class="menu-list menu-list--muted">
-              <li>2 Bacon</li>
+              <li>Bacon</li>
               <li>Sausage</li>
               <li>Egg</li>
               <li>Hash brown</li>
-              <li>Beans and tomatoes</li>
+              <li>Beans</li>
+              <li>Mushrooms or tomatoes</li>
             </ul>
           </div>
 
@@ -152,21 +153,10 @@
               <li>2 bacon</li>
               <li>2 sausages</li>
               <li>2 eggs</li>
-              <li>Hash brown</li>
-              <li>Beans and tomatoes</li>
+              <li>2 Hash browns</li>
+              <li>Beans</li>
               <li>black pudding</li>
-            </ul>
-          </div>
-
-          <div class="menu-tier">
-            <h4>Option 3</h4>
-            <ul class="menu-list menu-list--muted">
-              <li>2 bacon</li>
-              <li>2 sausages</li>
-              <li>2 eggs</li>
-              <li>2 Hash brown</li>
-              <li>Beans, tomatoes and mushrooms</li>
-              <li>black pudding</li>
+              <li>Mushrooms or tomatoes</li>
             </ul>
           </div>
 
@@ -177,8 +167,7 @@
               <li>Egg</li>
               <li>2 hash browns</li>
               <li>Beans</li>
-              <li>Mushrooms</li>
-              <li>Tomatoes</li>
+              <li>Mushrooms or tomatoes</li>
             </ul>
           </div>
         </div>
@@ -208,27 +197,29 @@
         <summary>Breakfast Cobs</summary>
         <div class="menu-acc-body">
           <ul class="menu-list">
+            <li>Sausage, bacon &amp; egg</li>
             <li>Bacon &amp; sausage</li>
             <li>Bacon</li>
             <li>Sausage</li>
             <li>2 &times; eggs</li>
             <li>Veggie sausage</li>
-            <li>Any extra as above</li>
           </ul>
           <p class="menu-note-inline">Any extra fillings as requested</p>
         </div>
       </details>
 
       <details class="menu-acc">
-        <summary>Cold Cobs or Sandwiches</summary>
+        <summary>Cold Cobs</summary>
         <div class="menu-acc-body">
           <ul class="menu-list">
             <li>Cheese &amp; tomato or onion</li>
             <li>Tuna mayo &amp; cucumber</li>
-            <li>Egg mayo</li>
+            <li>Egg mayo &amp; tomato</li>
             <li>Ham</li>
             <li>Beef &amp; onion</li>
             <li>BLT</li>
+            <li>Cheese &amp; ham</li>
+            <li>Chicken, stuffing, lettuce &amp; mayo</li>
           </ul>
           <p class="menu-note-inline">Add salad &middot; ask for any sauces such as:</p>
           <ul class="menu-list menu-list--grid menu-list--muted">
@@ -236,6 +227,7 @@
             <li>Mustard</li>
             <li>Ketchup</li>
             <li>Branston pickle</li>
+            <li>Brown sauce</li>
           </ul>
 
         </div>
@@ -247,25 +239,32 @@
         <h3 class="menu-group-title">Lunch Menu</h3>
 
       <details class="menu-acc">
-        <summary>Hot Lunch Meals &amp; Paninis</summary>
+        <summary>Hot Lunch Meals</summary>
         <div class="menu-acc-body">
           <p class="menu-note-inline">Comes with salad.</p>
-          <ul class="menu-list">
-            <li>Burger &amp; chips</li>
-            <li>Cheeseburger &amp; chips</li>
-            <li>Chicken burger &amp; chips</li>
-            <li>Veggie burger &amp; chips</li>
-            <li>Pasta &amp; garlic bread</li>
-            <li>Pie, chips &amp; gravy</li>
-            <li>Sausage roll &amp; chips</li>
-            <li>Egg, chips &amp; beans</li>
-            <li>Scampi, chips &amp; peas</li>
-          </ul>
+          <div class="menu-tier">
+            <ul class="menu-list">
+              <li>Pie, chips &amp; gravy</li>
+              <li>Sausage roll &amp; chips</li>
+              <li>Egg, chips &amp; beans</li>
+              <li>Scampi, chips &amp; peas</li>
+            </ul>
+          </div>
+          <div class="menu-tier">
+            <h4>Burgers:</h4>
+            <ul class="menu-list">
+              <li>Burger &amp; chips</li>
+              <li>Cheeseburger &amp; chips</li>
+              <li> Bacon cheeseburger &amp; chips</li>
+              <li>Chicken burger &amp; chips</li>
+              <li>Veggie burger &amp; chips</li>
+            </ul>
+          </div>
         </div>
       </details>
 
       <details class="menu-acc">
-        <summary>Hot Cobs or Paninis</summary>
+        <summary>Hot Cobs &amp; Paninis</summary>
         <div class="menu-acc-body">
           <div class="menu-tier">
             <h4>Cobs</h4>
@@ -278,7 +277,7 @@
             <h4>Paninis</h4>
             <ul class="menu-list">
               <li>Tuna cheese melt</li>
-              <li>Cheese &amp; ham</li>
+              <li>Cheese &amp; ham melt</li>
               <li>Beef &amp; onion cheese melt</li>
               <li>Cheese &amp; tomato melt</li>
               <li>Bacon &amp; tomato melt</li>
@@ -309,7 +308,8 @@
             <li>Toast, butter &amp; jam</li>
             <li>Egg (Scrambled or Fried) on toast</li>
             <li>Beans on toast</li>
-            <li>Soup of the day</li>
+            <li>Sausage roll</li>
+            <li>Crisps</li>
             <li>Check specials board</li>
           </ul>
         </div>
@@ -338,7 +338,7 @@
 
     </div>
 
-    <p class="menu-disclaimer">All food may contain traces of nuts. All food is subject to availability.</p>
+    <p class="menu-disclaimer">All food may contain traces of seeds and nuts. All food is subject to availability.</p>
   </div>
 </section>
 
@@ -396,7 +396,7 @@
         <div>
           <strong>Hours</strong>
           <div style="margin-top:6px;">
-            <div class="hours-row"><span>Mon &ndash; Fri: </span><span>7:30 &ndash; 13:30</span></div>
+            <div class="hours-row"><span>Mon &ndash; Fri: </span><span>7:30 &ndash; 14:00</span></div>
             
           </div>
         </div>
