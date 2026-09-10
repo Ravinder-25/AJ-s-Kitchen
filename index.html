@@ -95,18 +95,42 @@
       </div>
     </div>
     <div class="hero-mark">
-      <div class="hero-illustration">
-        <svg class="steam-cup" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g class="steam" fill="none" stroke-width="3" stroke-linecap="round">
-            <path d="M75 70 C70 55, 85 50, 80 35"/>
-            <path d="M100 70 C95 55, 110 50, 105 35"/>
-            <path d="M125 70 C120 55, 135 50, 130 35"/>
-          </g>
-          <path d="M50 90 h100 l-8 55 a12 12 0 0 1-12 10 H70 a12 12 0 0 1-12-10 Z" stroke="#2B2118" stroke-width="3" fill="none"/>
-          <path d="M150 100 q22 2 22 22 q0 20-22 20" stroke="#2B2118" stroke-width="3" fill="none"/>
-          <line x1="42" y1="156" x2="158" y2="156" stroke="#2B2118" stroke-width="5" stroke-linecap="round"/>
-        </svg>
-        <img src="cutlery.png" alt="Plate and cutlery illustration" class="hero-food-icon" />
+      <div class="hero-mark-inner">
+        <div class="hero-illustration">
+          <svg class="steam-cup" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g class="steam" fill="none" stroke-width="3" stroke-linecap="round">
+              <path d="M75 70 C70 55, 85 50, 80 35"/>
+              <path d="M100 70 C95 55, 110 50, 105 35"/>
+              <path d="M125 70 C120 55, 135 50, 130 35"/>
+            </g>
+            <path d="M50 90 h100 l-8 55 a12 12 0 0 1-12 10 H70 a12 12 0 0 1-12-10 Z" stroke="#2B2118" stroke-width="3" fill="none"/>
+            <path d="M150 100 q22 2 22 22 q0 20-22 20" stroke="#2B2118" stroke-width="3" fill="none"/>
+            <line x1="42" y1="156" x2="158" y2="156" stroke="#2B2118" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <img src="cutlery.png" alt="Plate and cutlery illustration" class="hero-food-icon" />
+        </div>
+
+        <aside class="review-note tilt-right" aria-label="Customer reviews from Google">
+          <div class="review-note-head">
+            <span class="review-note-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="review-note-source">Google Reviews</span>
+          </div>
+
+          <blockquote class="review-item">
+            <p>&ldquo;First class food, made comment to owners not to change anything. Will 100% be back!&rdquo;</p>
+          </blockquote>
+          <blockquote class="review-item">
+            <p>&ldquo;Good sausages, good hash browns, good bacon&hellip; smashing it with the new breakfast at Ajs&hellip; definitely be back! And its about time we had a good cafe this side of town!&rdquo;</p>
+          </blockquote>
+          <blockquote class="review-item hide-on-small">
+            <p>&ldquo;I went this morning for Breakfast, it was absolutely perfect. Will definitely be back.&rdquo;</p>
+          </blockquote>
+
+          <div class="review-note-links">
+            <a href="https://share.google/76Bet7TsRkookdO6k" id="googleProfileLink" target="_blank" rel="noopener">See our Google reviews</a>
+            <a href="https://g.page/r/CaikE0WXwKaLEBM/review" id="leaveReviewLink" target="_blank" rel="noopener">Leave us a review</a>
+          </div>
+        </aside>
       </div>
     </div>
   </div>
@@ -499,6 +523,17 @@
       </div>
 
       <div class="info-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 12.4a5 5 0 1 1-1.2-4.7"/>
+          <path d="M17 12.4h-4.2"/>
+        </svg>
+        <div>
+          <strong>Google</strong>
+          <p><a href="https://share.google/76Bet7TsRkookdO6k" id="googleProfileLinkVisit" target="_blank" rel="noopener">View our Google profile</a></p>
+        </div>
+      </div>
+
+      <div class="info-block">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <circle cx="12" cy="12" r="9"/>
           <path d="M3 12h18"/>
@@ -607,6 +642,38 @@
       trackEvent('social_interaction', {
         event_category: 'Social',
         event_label: 'Instagram',
+        action: 'click'
+      });
+    });
+  }
+
+  // Review interaction: fires when the Google Business profile or review links are clicked
+  const googleProfileLink = document.getElementById('googleProfileLink');
+  if (googleProfileLink) {
+    googleProfileLink.addEventListener('click', () => {
+      trackEvent('review_interaction', {
+        event_category: 'Reviews',
+        event_label: 'Google Business profile',
+        action: 'click'
+      });
+    });
+  }
+  const leaveReviewLink = document.getElementById('leaveReviewLink');
+  if (leaveReviewLink) {
+    leaveReviewLink.addEventListener('click', () => {
+      trackEvent('review_interaction', {
+        event_category: 'Reviews',
+        event_label: 'Leave a review',
+        action: 'click'
+      });
+    });
+  }
+  const googleProfileLinkVisit = document.getElementById('googleProfileLinkVisit');
+  if (googleProfileLinkVisit) {
+    googleProfileLinkVisit.addEventListener('click', () => {
+      trackEvent('review_interaction', {
+        event_category: 'Reviews',
+        event_label: 'Google Business profile (visit section)',
         action: 'click'
       });
     });
