@@ -81,6 +81,7 @@
 <main>
 <section class="hero" id="top">
   <div class="wrap hero-grid">
+    
     <div class="hero-copy">
       <span class="eyebrow">Basford &middot; Nottingham</span>
       <div class="hero-brand">
@@ -91,7 +92,7 @@
 
       <div class="hero-cta">
         <a href="#menu" id="seeMenuBtn" class="btn btn-primary">See the menu</a>
-        <a href="https://online.skytab.com/4cb41994c7d31607c445dae82d013360" id="seeMenuBtn" class="btn btn-primary">Order Online</a>
+        <a href="https://online.skytab.com/4cb41994c7d31607c445dae82d013360" id="OrderBtn" class="btn btn-primary" target="_blank" rel="noopener">Order Online</a>
         <a href="#gallery" class="btn btn-outline">View gallery</a>
         <a href="#reviews" class="btn btn-outline mobile-reviews-btn">See reviews</a>
         <a href="#visit" class="btn btn-outline">Find us</a>
@@ -135,6 +136,10 @@
           </div>
         </aside>
       </div>
+    </div>
+    <div class="hero-notice">
+      <span class="hero-notice-badge">New</span>
+      <p>You can now order online for takeaway - Order ahead and your food will be ready when you arrive. <em>(Collection only, no deliveries.)</em> <a href="https://online.skytab.com/4cb41994c7d31607c445dae82d013360" id="orderBannerLink" target="_blank" rel="noopener">Order now &rarr;</a></p>
     </div>
   </div>
   <span class="scroll-cue">Scroll</span>
@@ -643,6 +648,30 @@
       trackEvent('menu_interaction', {
         event_category: 'Menu',
         event_label: 'See the menu button',
+        action: 'click'
+      });
+    });
+  }
+
+  // Order interaction: fires when the Order Online button is clicked
+  const orderBtn = document.getElementById('OrderBtn');
+  if (orderBtn) {
+    orderBtn.addEventListener('click', () => {
+      trackEvent('order_interaction', {
+        event_category: 'Order',
+        event_label: 'Order Online button',
+        action: 'click'
+      });
+    });
+  }
+
+  // Order interaction: fires when the "Order now" link in the hero notice is clicked
+  const orderBannerLink = document.getElementById('orderBannerLink');
+  if (orderBannerLink) {
+    orderBannerLink.addEventListener('click', () => {
+      trackEvent('order_interaction', {
+        event_category: 'Order',
+        event_label: 'Order now (hero notice)',
         action: 'click'
       });
     });
