@@ -81,7 +81,6 @@
 <main>
 <section class="hero" id="top">
   <div class="wrap hero-grid">
-    
     <div class="hero-copy">
       <span class="eyebrow">Basford &middot; Nottingham</span>
       <div class="hero-brand">
@@ -139,7 +138,7 @@
     </div>
     <div class="hero-notice">
       <span class="hero-notice-badge">New</span>
-      <p>You can now order online for takeaway - Order ahead and your food will be ready when you arrive. <em>(Collection only, no deliveries.)</em> <a href="https://online.skytab.com/4cb41994c7d31607c445dae82d013360" id="orderBannerLink" target="_blank" rel="noopener">Order now &rarr;</a></p>
+      <p>You can now order online for eat-in or takeaway &mdash; order ahead and your food will be ready when you arrive. <em>(Collection only, no deliveries.)</em> <a href="https://online.skytab.com/4cb41994c7d31607c445dae82d013360" id="orderBannerLink" target="_blank" rel="noopener">Order now &rarr;</a></p>
     </div>
   </div>
   <span class="scroll-cue">Scroll</span>
@@ -180,7 +179,7 @@
         <h3 class="menu-group-title">Breakfast Menu</h3>
 
       <details class="menu-acc" open id="acc-breakfasts">
-        <summary>Breakfasts</summary>
+        <summary><span class="menu-acc-summary-inner">Breakfasts</span></summary>
         <div class="menu-acc-body">
           <p class="menu-note-inline">All come with a choice of toast or bread &amp; butter.</p>
 
@@ -224,7 +223,7 @@
       </details>
 
       <details class="menu-acc">
-        <summary>Build Your Own Breakfast</summary>
+        <summary><span class="menu-acc-summary-inner">Build Your Own Breakfast</span></summary>
         <div class="menu-acc-body">
           <p class="menu-note-inline">Choose from:</p>
           <ul class="menu-list menu-list--grid menu-list--muted">
@@ -247,7 +246,7 @@
       </details>
 
       <details class="menu-acc">
-        <summary>Breakfast Cobs</summary>
+        <summary><span class="menu-acc-summary-inner">Breakfast Cobs</span></summary>
         <div class="menu-acc-body">
           <ul class="menu-list">
             <li>Sausage, bacon &amp; egg</li>
@@ -265,7 +264,7 @@
       </details>
 
       <details class="menu-acc">
-        <summary>Cold Cobs</summary>
+        <summary><span class="menu-acc-summary-inner">Cold Cobs</span></summary>
         <div class="menu-acc-body">
           <ul class="menu-list">
             <li>Cheese &amp; ham</li>
@@ -297,7 +296,7 @@
         <h3 class="menu-group-title">Lunch Menu</h3>
 
       <details class="menu-acc" id="acc-hot-lunch">
-        <summary>Hot Lunch Meals</summary>
+        <summary><span class="menu-acc-summary-inner">Hot Lunch Meals</span></summary>
         <div class="menu-acc-body">
           <p class="menu-note-inline">Comes with salad.</p>
           <div class="menu-tier">
@@ -323,7 +322,7 @@
       </details>
 
       <details class="menu-acc">
-        <summary>Hot Cobs &amp; Paninis</summary>
+        <summary><span class="menu-acc-summary-inner">Hot Cobs &amp; Paninis</span></summary>
         <div class="menu-acc-body">
           <div class="menu-tier">
             <h4>Cobs</h4>
@@ -346,7 +345,7 @@
       </details>
 
       <details class="menu-acc">
-        <summary>Jacket Potatoes</summary>
+        <summary><span class="menu-acc-summary-inner">Jacket Potatoes</span></summary>
         <div class="menu-acc-body">
           <p class="menu-note-inline">Comes with salad</p>
           <p class="menu-note-inline">Fillings:</p>
@@ -361,7 +360,7 @@
       </details>
 
       <details class="menu-acc" id="acc-something-light">
-        <summary>Something Light</summary>
+        <summary><span class="menu-acc-summary-inner">Something Light</span></summary>
         <div class="menu-acc-body">
           <ul class="menu-list">
             <li>Pukka Pies</li>
@@ -380,7 +379,7 @@
         <h3 class="menu-group-title">Snacks &amp; Drinks</h3>
 
         <details class="menu-acc">
-          <summary>Snacks</summary>
+          <summary><span class="menu-acc-summary-inner">Snacks</span></summary>
           <div class="menu-acc-body">
             <ul class="menu-list menu-list--grid">
               <li>Crisps</li>
@@ -402,7 +401,7 @@
       </details>
 
       <details class="menu-acc">
-        <summary>Hot &amp; Cold Drinks</summary>
+        <summary><span class="menu-acc-summary-inner">Hot &amp; Cold Drinks</span></summary>
         <div class="menu-acc-body">
           <ul class="menu-list menu-list--grid">
             <li>Tea</li>
@@ -462,6 +461,9 @@
       <button class="photo-slot" type="button" data-full="images/Scampi%20&%20Chips.JPG" data-caption="Scampi, chips & peas served at AJ,s Kitchen">
         <img src="images/Scampi%20&%20Chips.JPG" alt="Scampi, chips & peas served at AJ's Kitchen" loading="lazy">
       </button>
+      <button class="photo-slot" type="button" data-full="images/CheeseHamPanini.JPG" data-caption="Cheese & Ham Panini served at AJ's Kitchen">
+        <img src="images/CheeseHamPanini.JPG" alt="Cheese & Ham Panini served at AJ's Kitchen" loading="lazy">
+      </button>
     </div>
   </div>
 </section>
@@ -499,24 +501,6 @@
         </div>
       </div>
       
-      <!--
-      <div class="info-block">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h4l2 5-2.5 1.5a11 11 0 005 5L14 14l5 2v4a2 2 0 01-2 2A17 17 0 013 7a2 2 0 012-2z"/></svg>
-        <div>
-          <strong>Phone</strong>
-          <p>0115 000 0000</p>
-        </div>
-      </div>
-
-      <div class="info-block">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 5h12a2 2 0 012 2v8a2 2 0 01-2 2H9l-3 3V7a2 2 0 012-2z"/><path d="M8 9h8"/><path d="M8 12h5"/></svg>
-        <div>
-          <strong>WhatsApp</strong>
-          <p>07900 000000</p>
-        </div>
-      </div>
-      -->
-      
       <div class="info-block">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <rect x="3" y="5" width="18" height="14" rx="2" ry="2"/>
@@ -528,6 +512,22 @@
         </div>
       </div>
 
+      <div class="info-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M6 5h12a2 2 0 012 2v8a2 2 0 01-2 2H9l-3 3V7a2 2 0 012-2z"/>
+          <path d="M8 9h8"/>
+          <path d="M8 12h5"/>
+        </svg>
+        <div>
+          <strong>WhatsApp</strong>
+          <p>
+            <a href="https://wa.me/07414681942" target="_blank" rel="noopener">
+              07414681942
+            </a>
+          </p>
+        </div>
+      </div>
+      
       <div class="info-block">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
@@ -577,6 +577,12 @@
     </div>
 
     
+  </div>
+
+  <div class="wrap">
+    <div class="hygiene-rating">
+      <script src="https://ratings.food.gov.uk/embed/embed-badge.js" data-business-id="1985492" data-rating-style="1" data-welsh="false"></script>
+    </div>
   </div>
 </section>
 </main>
